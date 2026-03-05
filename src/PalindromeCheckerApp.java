@@ -7,6 +7,13 @@ public class PalindromeCheckerApp {
         System.out.println("   Version 1.0");
         System.out.println("=================================");
 
-    }
+        String word = "madam";
 
+        if(word.equals(new StringBuilder(word).reverse().toString())) {
+            System.out.println(word + " is a Palindrome");
+        } else {
+            System.out.println(word + " is not a Palindrome");
+        }
+
+    }
 }
