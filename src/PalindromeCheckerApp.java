@@ -1,24 +1,30 @@
-import java.util.ArrayDeque;
-import java.util.Deque;
+class Node {
+    char data;
+    Node next;
+    Node(char data) { this.data = data; }
+}
 
 public class PalindromeCheckerApp {
 
     public static void main(String[] args) {
 
-        String word = "deed";
-        Deque<Character> deque = new ArrayDeque<>();
+        String word = "rotor";
+        Node head = null;
 
-        for(char c : word.toCharArray()) deque.add(c);
-
-        boolean isPalindrome = true;
-        while(deque.size() > 1) {
-            if(deque.removeFirst() != deque.removeLast()) {
-                isPalindrome = false;
-                break;
-            }
+        for(char c : word.toCharArray()) {
+            Node node = new Node(c);
+            node.next = head;
+            head = node;
         }
 
-        System.out.println(word + (isPalindrome ? " is a Palindrome" : " is not a Palindrome"));
+        Node curr = head;
+        String reversed = "";
+        while(curr != null) {
+            reversed += curr.data;
+            curr = curr.next;
+        }
+
+        System.out.println(word + (word.equals(reversed) ? " is a Palindrome" : " is not a Palindrome"));
 
     }
 
