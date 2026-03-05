@@ -1,18 +1,24 @@
-import java.util.Stack;
+import java.util.ArrayDeque;
+import java.util.Deque;
 
 public class PalindromeCheckerApp {
 
     public static void main(String[] args) {
 
-        String word = "noon";
-        Stack<Character> stack = new Stack<>();
+        String word = "deed";
+        Deque<Character> deque = new ArrayDeque<>();
 
-        for(char c : word.toCharArray()) stack.push(c);
+        for(char c : word.toCharArray()) deque.add(c);
 
-        String reversed = "";
-        while(!stack.isEmpty()) reversed += stack.pop();
+        boolean isPalindrome = true;
+        while(deque.size() > 1) {
+            if(deque.removeFirst() != deque.removeLast()) {
+                isPalindrome = false;
+                break;
+            }
+        }
 
-        System.out.println(word + (word.equals(reversed) ? " is a Palindrome" : " is not a Palindrome"));
+        System.out.println(word + (isPalindrome ? " is a Palindrome" : " is not a Palindrome"));
 
     }
 
